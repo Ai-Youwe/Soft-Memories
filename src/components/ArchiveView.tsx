@@ -1,11 +1,15 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MEMORIES } from '../constants';
+import { Memory } from '../types';
 import { useLanguage } from '../LanguageContext';
 
-export const ArchiveView: React.FC = () => {
-  const { language, t } = useLanguage();
-  const memories = MEMORIES[language];
+interface ArchiveViewProps {
+  memories: Memory[];
+  onRecordClick: () => void;
+}
+
+export const ArchiveView: React.FC<ArchiveViewProps> = ({ memories, onRecordClick }) => {
+  const { t } = useLanguage();
 
   return (
     <div className="max-w-screen-md mx-auto px-6 py-12">
@@ -68,7 +72,10 @@ export const ArchiveView: React.FC = () => {
         <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/silk-weave.png')]"></div>
         <h3 className="text-on-primary font-serif italic text-3xl mb-4 relative z-10">{t('captureNew')}</h3>
         <p className="text-on-primary/80 mb-8 relative z-10">{t('journeyContinues')}</p>
-        <button className="bg-white text-primary px-8 py-3 rounded-full font-sans tracking-wide hover:bg-rose-50 transition-all transform hover:scale-105 active:scale-95 shadow-lg relative z-10">
+        <button 
+          onClick={onRecordClick}
+          className="bg-white text-primary px-8 py-3 rounded-full font-sans tracking-wide hover:bg-rose-50 transition-all transform hover:scale-105 active:scale-95 shadow-lg relative z-10"
+        >
           {t('recordNew')}
         </button>
       </div>

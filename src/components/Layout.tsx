@@ -33,7 +33,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
               >
                 {t('archive')}
               </button>
-              <button className="font-sans text-[10px] tracking-widest uppercase text-rose-400 hover:text-rose-600">{t('journal')}</button>
+              <button 
+                onClick={() => onViewChange('journal')}
+                className={`font-sans text-[10px] tracking-widest uppercase transition-all ${currentView === 'journal' ? 'text-rose-900 font-bold border-b-2 border-rose-900/10' : 'text-rose-400 hover:text-rose-600'}`}
+              >
+                {t('journal')}
+              </button>
               <button className="font-sans text-[10px] tracking-widest uppercase text-rose-400 hover:text-rose-600">{t('moments')}</button>
             </nav>
             
@@ -50,7 +55,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
                 <img 
                   src="https://picsum.photos/seed/archivist/100/100" 
                   alt="Profile" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover cursor-pointer"
+                  onClick={() => onViewChange('settings')}
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -67,8 +73,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
       {/* BottomNavBar */}
       <nav className="fixed bottom-0 left-0 w-full z-50 glass rounded-t-[2.5rem] shadow-[0_-10px_40px_rgba(142,73,88,0.08)]">
         <div className="flex justify-around items-center px-6 pb-8 pt-4 max-w-screen-md mx-auto">
-          <button className="flex flex-col items-center justify-center text-rose-400 px-5 py-2 hover:bg-rose-50/50 transition-colors group">
-            <Sparkles className="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
+          <button 
+            onClick={() => onViewChange('journal')}
+            className={`flex flex-col items-center justify-center px-5 py-2 transition-all group ${currentView === 'journal' ? 'bg-rose-100/50 text-rose-900 rounded-full scale-105' : 'text-rose-400 hover:bg-rose-50/50'}`}
+          >
+            <BookOpen className="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
             <span className="font-sans text-[10px] tracking-widest uppercase">{t('journal')}</span>
           </button>
           
@@ -88,7 +97,10 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
             <span className="font-sans text-[10px] tracking-widest uppercase font-semibold">{t('archive')}</span>
           </button>
 
-          <button className="flex flex-col items-center justify-center text-rose-400 px-5 py-2 hover:bg-rose-50/50 transition-colors group">
+          <button 
+            onClick={() => onViewChange('settings')}
+            className={`flex flex-col items-center justify-center px-5 py-2 transition-all group ${currentView === 'settings' ? 'bg-rose-100/50 text-rose-900 rounded-full scale-105' : 'text-rose-400 hover:bg-rose-50/50'}`}
+          >
             <Settings className="w-5 h-5 mb-1 group-hover:scale-110 transition-transform" />
             <span className="font-sans text-[10px] tracking-widest uppercase">{t('settings')}</span>
           </button>

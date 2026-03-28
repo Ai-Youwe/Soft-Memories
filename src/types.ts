@@ -1,4 +1,4 @@
-export type View = 'archive' | 'record' | 'style' | 'transcribing';
+export type View = 'archive' | 'record' | 'style' | 'transcribing' | 'journal' | 'settings';
 export type Language = 'en' | 'zh';
 
 export interface Memory {
