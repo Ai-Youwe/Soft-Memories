@@ -1,0 +1,5 @@
+{
+  "name": "Ethereal Archivist",
+  "description": "A digital sanctuary for sentiment, transcribing your whispers into silk and preserving memories in the amber of time.",
+  "requestFramePermissions": ["microphone"]
+}
